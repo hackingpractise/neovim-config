@@ -79,7 +79,15 @@ return {
       table.insert(M.sources, {name = "crates"})
       return M
     end,
-  }
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    ft = {"python"},
+    opts = function()
+      return require "configs.null-ls"
+    end,
+  },
+
 
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
