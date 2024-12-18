@@ -32,6 +32,15 @@ for _, lsp in ipairs(python_server) do
     filetypes = {"python"},
   })
 end
+
+local on_attach = nvlsp.on_attach
+lspconfig.clangd.setup {
+  on_attach = function(client, bufnr)
+    client.server_capabilities.signatureHelpProvider = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = nvlsp.capabilities,
+}
 -- configuring single server, example: typescript
 -- lspconfig.ts_ls.setup {
 --   on_attach = nvlsp.on_attach,

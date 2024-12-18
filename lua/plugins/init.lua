@@ -44,6 +44,9 @@ return {
         "ruff-lsp",
         "pyright",
         "lua-language-server",
+        "clang-format",
+        "clangd",
+        "codelldb",
       },
     },
   },
@@ -82,7 +85,7 @@ return {
   },
   {
     "nvimtools/none-ls.nvim",
-    ft = {"python"},
+    ft = {"python", "cpp",},
     opts = function()
       return require "configs.null-ls"
     end,
