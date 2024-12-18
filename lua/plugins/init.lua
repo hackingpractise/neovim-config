@@ -59,8 +59,6 @@ return {
       require('cmp').setup.buffer({
         sources = { { name = "crates" }}
       })
-      crates.show()
-      require("core.utils").load_mappings("crates")
     end,
   },
   {
