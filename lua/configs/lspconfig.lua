@@ -7,7 +7,6 @@ local lspconfig = require "lspconfig"
 local servers = {
   "html",
   "cssls",
-  "rnix",
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 
@@ -42,6 +41,24 @@ lspconfig.clangd.setup {
   end,
   capabilities = nvlsp.capabilities,
 }
+lspconfig.nixd.setup({
+  cmd = { "nixd" },
+  settings = {
+    nixd = {
+      nixpkgs = {
+        expr = "import <nixpkgs> { }",
+      },
+      formatting = {
+        command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+      },
+      options = {
+        home_manager = {
+            expr = '(builtins.getFlake "/home/raph/nix/flake.nix").homeConfigurations.CONFIGNAME.options',
+        },
+      },
+    },
+  },
+})
 -- configuring single server, example: typescript
 -- lspconfig.ts_ls.setup {
 --   on_attach = nvlsp.on_attach,
